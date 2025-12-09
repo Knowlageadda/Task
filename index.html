@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#F97316">
+<meta name="description" content="Gujarati Task Manager with recurring tasks and daily reminders">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ટાસ્ક">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" sizes="192x192" href="icon-192.png">
+<link rel="manifest" href="manifest.json">
+<title>📝 ટાસ્ક મેનેજર PWA</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans Gujarati',sans-serif;background:linear-gradient(135deg,#FFF7ED,#FEF3C7);min-height:100vh;padding:1rem}body.dark{background:linear-gradient(135deg,#1F2937,#374151);color:#F9FAFB}.c{max-width:600px;margin:0 auto}.h{text-align:center;color:#EA580C;font-size:1.75rem;font-weight:700;margin-bottom:1rem}.dark .h{color:#F97316}.tb{position:fixed;top:1rem;right:1rem;background:#fff;border:none;width:48px;height:48px;border-radius:50%;font-size:1.5rem;cursor:pointer;box-shadow:0 4px 6px rgba(0,0,0,.1);z-index:999}.dark .tb{background:#374151}.ac{background:linear-gradient(135deg,#10B981,#059669);color:#fff;border-radius:1rem;padding:1rem;margin-bottom:1rem;box-shadow:0 4px 6px rgba(0,0,0,.2)}.ac h3{font-size:1rem;margin-bottom:.5rem}.at{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem}.ai{background:rgba(255,255,255,.2);padding:.5rem;border-radius:.5rem;text-align:center}.atm{font-size:1.3rem;font-weight:700;display:block}.al{font-size:.7rem}.atg{display:flex;align-items:center;justify-content:space-between;margin-top:.5rem;padding-top:.5rem;border-top:1px solid rgba(255,255,255,.2)}.sw{width:48px;height:24px;background:rgba(255,255,255,.3);border-radius:12px;cursor:pointer;position:relative}.sw.on{background:#fff}.sw::after{content:'';position:absolute;width:20px;height:20px;background:#fff;border-radius:50%;top:2px;left:2px;transition:.3s}.sw.on::after{left:26px;background:#10B981}.st{background:#DBEAFE;padding:.7rem;border-radius:.5rem;margin-bottom:1rem;font-size:.85rem;color:#1E40AF;text-align:center;display:none}.st.er{background:#FEE2E2;color:#DC2626}.st.ok{background:#D1FAE5;color:#065F46}.cd{background:#fff;border-radius:1rem;box-shadow:0 4px 6px rgba(0,0,0,.1);padding:1rem;margin-bottom:1rem}.dark .cd{background:#374151}.ct{font-size:1rem;font-weight:600;color:#1F2937;margin-bottom:.7rem}.dark .ct{color:#F9FAFB}input{width:100%;padding:.65rem;border:2px solid #FED7AA;border-radius:.5rem;font-size:.9rem;margin-bottom:.7rem}.dark input{background:#4B5563;border-color:#6B7280;color:#F9FAFB}input:focus{outline:0;border-color:#F97316}.dt{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-bottom:.7rem}.lb{font-size:.8rem;font-weight:500;color:#6B7280;margin-bottom:.2rem}.dark .lb{color:#D1D5DB}.rb{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.7rem}.br{padding:.45rem .75rem;background:#F3F4F6;color:#374151;border:none;border-radius:.5rem;cursor:pointer;font-size:.75rem}.dark .br{background:#4B5563;color:#F9FAFB}.br.on{background:#F97316;color:#fff}.rr{display:flex;align-items:center;gap:.5rem;margin-bottom:.7rem}.ro{display:none;background:#F9FAFB;padding:.7rem;border-radius:.5rem;margin-bottom:.7rem}.dark .ro{background:#4B5563}.ro.on{display:block}.fb{display:flex;gap:.5rem;margin-bottom:.7rem}.bd{padding:.45rem .75rem;background:#fff;border:2px solid #E5E7EB;border-radius:.5rem;cursor:pointer;font-size:.75rem}.dark .bd{background:#374151;color:#F9FAFB;border-color:#6B7280}.bd.on{background:#F97316;color:#fff;border-color:#F97316}.ds{display:grid;grid-template-columns:repeat(7,1fr);gap:.4rem;margin-bottom:.7rem}.bp{background:#F97316;color:#fff;width:100%;padding:.7rem;border:none;border-radius:.5rem;cursor:pointer;font-size:.95rem;font-weight:600}.fg{display:flex;gap:.5rem;margin-bottom:1rem;overflow-x:auto}.ts{background:#fff;border-radius:.7rem;box-shadow:0 2px 4px rgba(0,0,0,.1);padding:.85rem;margin-bottom:.7rem;position:relative}.dark .ts{background:#374151}.ts.cp{opacity:.6}.rcb{position:absolute;top:.4rem;right:.4rem;background:#10B981;color:#fff;padding:.15rem .4rem;border-radius:.3rem;font-size:.65rem;font-weight:600}.tc{display:flex;gap:.65rem;align-items:flex-start}.cb{width:20px;height:20px;border:2px solid #9CA3AF;border-radius:50%;cursor:pointer;flex-shrink:0;margin-top:.15rem;display:flex;align-items:center;justify-content:center}.cb.cp{background:#10B981;border-color:#10B981}.cb.cp::after{content:'✓';color:#fff;font-size:.85rem;font-weight:700}.ti{flex:1}.tt{font-size:.9rem;color:#1F2937;margin-bottom:.15rem}.dark .tt{color:#F9FAFB}.tt.cp{text-decoration:line-through;color:#6B7280}.td{font-size:.75rem;color:#6B7280;margin-bottom:.4rem}.dark .td{color:#D1D5DB}.ta{display:flex;gap:.45rem}.ba{width:32px;height:32px;border:none;border-radius:.5rem;cursor:pointer;font-size:.95rem}.be{background:#DBEAFE}.bx{background:#FEE2E2}.te{display:flex;gap:.4rem;margin-top:.4rem}.bt{padding:.2rem .45rem;background:#DBEAFE;color:#1E40AF;border:none;border-radius:.3rem;cursor:pointer;font-size:.7rem}.em{text-align:center;padding:2rem 1rem;color:#6B7280}.ei{font-size:2.5rem;margin-bottom:.7rem;opacity:.5}
+</style>
+</head>
+<body>
+<button class="tb" onclick="tT()">🌙</button>
+<div class="c">
+<h1 class="h">📝 ટાસ્ક મેનેજર PWA</h1>
+<div class="ac">
+<h3>🔔 દરરોજના રિમાઇન્ડર્સ</h3>
+<div class="at">
+<div class="ai"><span class="atm">8:00</span><span class="al">સવારે</span></div>
+<div class="ai"><span class="atm">4:00</span><span class="al">સાંજે</span></div>
+<div class="ai"><span class="atm">9:00</span><span class="al">રાત્રે</span></div>
+</div>
+<div class="atg">
+<label style="font-size:.85rem">Daily Reminders</label>
+<div class="sw on" id="as" onclick="tA()"></div>
+</div>
+</div>
+<div id="st" class="st"></div>
+<div class="cd">
+<h2 class="ct" id="ti">➕ નવું ટાસ્ક</h2>
+<input type="text" id="inp" placeholder="ટાસ્ક લખો...">
+<div class="dt">
+<div><label class="lb">📅 તારીખ</label><input type="date" id="di"></div>
+<div><label class="lb">🕐 સમય</label><input type="time" id="tm"></div>
+</div>
+<label class="lb">⏰ રિમાઇન્ડર</label>
+<div class="rb">
+<button class="br on" onclick="sR(5)">5 મિનિટ</button>
+<button class="br" onclick="sR(10)">10 મિનિટ</button>
+<button class="br" onclick="sR(15)">15 મિનિટ</button>
+<button class="br" onclick="sR(30)">30 મિનિટ</button>
+</div>
+<div class="rr">
+<div class="sw" id="rs" onclick="tR()"></div>
+<label class="lb" style="margin:0">🔄 રોજિંદા ટાસ્ક</label>
+</div>
+<div class="ro" id="op">
+<label class="lb">આવર્તન:</label>
+<div class="fb">
+<button class="br on" onclick="sF('d')">દરરોજ</button>
+<button class="br" onclick="sF('w')">અઠવાડિયે</button>
+<button class="br" onclick="sF('m')">મહિને</button>
+</div>
+<div id="ws" style="display:none">
+<label class="lb">દિવસો:</label>
+<div class="ds">
+<button class="br" onclick="tD(0)">રવિ</button>
+<button class="br" onclick="tD(1)">સોમ</button>
+<button class="br" onclick="tD(2)">મંગળ</button>
+<button class="br" onclick="tD(3)">બુધ</button>
+<button class="br" onclick="tD(4)">ગુરુ</button>
+<button class="br" onclick="tD(5)">શુક્ર</button>
+<button class="br" onclick="tD(6)">શનિ</button>
+</div>
+</div>
+</div>
+<button class="bp" onclick="add()">➕ ઉમેરો</button>
+</div>
+<div class="fg">
+<button class="bd on" onclick="sF2('બધા')">બધા</button>
+<button class="bd" onclick="sF2('આજના')">આજના</button>
+<button class="bd" onclick="sF2('રોજિંદા')">રોજિંદા</button>
+<button class="bd" onclick="sF2('બાકી')">બાકી</button>
+<button class="bd" onclick="sF2('પૂર્ણ')">પૂર્ણ</button>
+</div>
+<div id="ls"></div>
+</div>
+<script>
+var T=JSON.parse(localStorage.getItem('t')||'[]'),r=5,f='બધા',e=null,d=localStorage.getItem('d')==='1',a=localStorage.getItem('a')!=='0',rc=false,rf='d',sd=[];
+d&&document.body.classList.add('dark');a||document.getElementById('as').classList.remove('on');
+window.onload=()=>{if('Notification'in window&&Notification.permission==='default')Notification.requestPermission();if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});pR();setInterval(cA,60000);setInterval(cT,30000);ren()};
+function tT(){d=!d;localStorage.setItem('d',d?'1':'0');document.body.classList.toggle('dark')}
+function tA(){a=!a;localStorage.setItem('a',a?'1':'0');document.getElementById('as').classList.toggle('on',a);sh(a?'✅ Alarms on':'Alarms off',a?'ok':'er')}
+function tR(){rc=!rc;document.getElementById('rs').classList.toggle('on',rc);document.getElementById('op').classList.toggle('on',rc)}
+function cA(){if(!a)return;var n=new Date(),h=n.getHours(),m=n.getMinutes(),l=localStorage.getItem('la'),c=h+':'+m;if(l===c)return;if((h===8||h===16||h===21)&&m===0){var p=T.filter(t=>!t.c).length;no('🔔 Task Check!','તારા '+p+' tasks બાકી છે!');localStorage.setItem('la',c)}}
+function pR(){var td=new Date();td.setHours(0,0,0,0);T.forEach(t=>{if(t.r&&t.dt){var lp=t.lp?new Date(t.lp):null;if(!lp||lp<td){var cr=false;if(t.r.f==='d')cr=true;else if(t.r.f==='w'){var tw=td.getDay();cr=t.r.ds&&t.r.ds.includes(tw)}else if(t.r.f==='m'){var od=new Date(t.dt);cr=td.getDate()===od.getDate()}if(cr){var odt=new Date(t.dt),ndt=new Date(td);ndt.setHours(odt.getHours(),odt.getMinutes(),0,0);if(ndt>new Date()){var nt={id:Date.now()+Math.random(),tx:t.tx,dt:ndt.toISOString().slice(0,16),rm:t.rm,c:false,n:false,pi:t.id};T.unshift(nt)}}t.lp=td.toISOString()}}});sv()}
+function cT(){var n=new Date();T.forEach(t=>{if(!t.c&&t.dt&&!t.n){var dt=new Date(t.dt),rt=new Date(dt.getTime()-t.rm*60000);if(n>=rt&&n<dt){no('🔔 Task',t.tx);t.n=true}}});sv();ren()}
+function no(ti,mg){if('Notification'in window&&Notification.permission==='granted'){try{new Notification(ti,{body:mg,icon:'icon-192.png',requireInteraction:true})}catch(e){alert(ti+'\n'+mg)}}else alert(ti+'\n'+mg);try{var c=new(window.AudioContext||window.webkitAudioContext)();var o=c.createOscillator();var g=c.createGain();o.connect(g);g.connect(c.destination);o.frequency.value=800;g.gain.setValueAtTime(0.3,c.currentTime);g.gain.exponentialRampToValueAtTime(0.01,c.currentTime+0.5);o.start();o.stop(c.currentTime+0.5)}catch(e){}}
+function sh(m,tp){var s=document.getElementById('st');s.textContent=m;s.className='st '+tp;s.style.display='block';setTimeout(()=>s.style.display='none',3000)}
+function sv(){localStorage.setItem('t',JSON.stringify(T))}
+function sR(m){r=m;document.querySelectorAll('.rb .br').forEach(b=>b.classList.remove('on'));event.target.classList.add('on')}
+function sF(ft){rf=ft;document.querySelectorAll('.ro .br').forEach(b=>b.classList.remove('on'));event.target.classList.add('on');document.getElementById('ws').style.display=ft==='w'?'block':'none'}
+function tD(dy){var i=sd.indexOf(dy);i>-1?(sd.splice(i,1),event.target.classList.remove('on')):(sd.push(dy),event.target.classList.add('on'))}
+function add(){var inp=document.getElementById('inp'),di=document.getElementById('di'),tm=document.getElementById('tm');if(!inp.value.trim()){sh('❌ ટાસ્ક લખો!','er');return}var tk={id:e||Date.now(),tx:inp.value.trim(),dt:di.value&&tm.value?di.value+'T'+tm.value:null,rm:r,c:false,n:false};if(rc&&di.value&&tm.value)tk.r={f:rf,ds:rf==='w'?sd.slice():[]},tk.lp=null;if(e){var i=T.findIndex(x=>x.id===e);i!==-1&&(T[i]=tk);e=null;document.getElementById('ti').textContent='➕ નવું ટાસ્ક';sh('✅ અપડેટ!','ok')}else{T.unshift(tk);sh('✅ ઉમેર્યું!','ok')}sv();inp.value='';di.value='';tm.value='';rc=false;sd=[];document.getElementById('rs').classList.remove('on');document.getElementById('op').classList.remove('on');document.querySelectorAll('.ds .br').forEach(b=>b.classList.remove('on'));ren()}
+function del(id){confirm('ડિલીટ?')&&(T=T.filter(t=>t.id!==id),sv(),ren(),sh('✅ ડિલીટ થયું','ok'))}
+function tog(id){var t=T.find(x=>x.id===id);t&&(t.c=!t.c,sv(),ren())}
+function edt(id){var t=T.find(x=>x.id===id);if(!t)return;e=id;document.getElementById('inp').value=t.tx;document.getElementById('ti').textContent='✏️ એડિટ';if(t.dt){var p=t.dt.split('T');document.getElementById('di').value=p[0];document.getElementById('tm').value=p[1]}r=t.rm;rc=t.r?true:false;if(t.r){rf=t.r.f;sd=t.r.ds?t.r.ds.slice():[]}document.querySelectorAll('.rb .br').forEach((b,i)=>b.classList.toggle('on',[5,10,15,30][i]===r));document.getElementById('rs').classList.toggle('on',rc);document.getElementById('op').classList.toggle('on',rc);if(rc){document.querySelectorAll('.ro .br').forEach((b,i)=>b.classList.toggle('on',['d','w','m'][i]===rf));document.getElementById('ws').style.display=rf==='w'?'block':'none';sd.forEach(dy=>document.querySelectorAll('.ds .br')[dy].classList.add('on'))}window.scrollTo({top:0,behavior:'smooth'})}
+function ext(id,mn){var t=T.find(x=>x.id===id);if(t&&t.dt){var nd=new Date(new Date(t.dt).getTime()+mn*60000);t.dt=nd.toISOString().slice(0,16);t.n=false;sv();ren();sh('✅ સમય વધ્યો','ok')}}
+function fDT(dt){if(!dt)return'';var dv=new Date(dt),m=['જાન','ફેબ','માર','એપ્રિલ','મે','જૂન','જુલાઈ','ઓગ','સપ્ટે','ઓક્ટો','નવે','ડિસે'];return dv.getDate()+' '+m[dv.getMonth()]+', '+dv.getHours().toString().padStart(2,'0')+':'+dv.getMinutes().toString().padStart(2,'0')}
+function sF2(ft){f=ft;document.querySelectorAll('.fg .bd').forEach(b=>b.classList.remove('on'));event.target.classList.add('on');ren()}
+function gF(){var td=new Date().toDateString();if(f==='આજના')return T.filter(t=>t.dt&&new Date(t.dt).toDateString()===td);if(f==='રોજિંદા')return T.filter(t=>t.r);if(f==='બાકી')return T.filter(t=>!t.c);if(f==='પૂર્ણ')return T.filter(t=>t.c);return T}
+function ren(){var ls=document.getElementById('ls'),fl=gF();if(fl.length===0){ls.innerHTML='<div class="em"><div class="ei">📝</div><p>કોઈ ટાસ્ક નથી</p></div>';return}ls.innerHTML=fl.map(t=>{var rb='';if(t.r){if(t.r.f==='d')rb='🔄 દરરોજ';else if(t.r.f==='w')rb='🔄 અઠવાડિયે';else if(t.r.f==='m')rb='🔄 મહિને'}return'<div class="ts '+(t.c?'cp':'')+'">'+( rb?'<span class="rcb">'+rb+'</span>':'')+'<div class="tc">'+'<div class="cb '+(t.c?'cp':'')+'" onclick="tog('+t.id+')"></div>'+'<div class="ti">'+'<div class="tt '+(t.c?'cp':'')+'">'+t.tx+'</div>'+(t.dt?'<div class="td">🕐 '+fDT(t.dt)+' <span style="color:#F97316">⏰'+t.rm+'m</span></div>':'')+(t.dt&&!t.c?'<div class="te"><button class="bt" onclick="ext('+t.id+',15)">+15m</button><button class="bt" onclick="ext('+t.id+',30)">+30m</button><button class="bt" onclick="ext('+t.id+',60)">+1h</button></div>':'')+'</div>'+'<div class="ta">'+'<button class="ba be" onclick="edt('+t.id+')">✏️</button>'+'<button class="ba bx" onclick="del('+t.id+')">🗑️</button>'+'</div></div></div>'}).join('')}
+document.getElementById('inp').addEventListener('keypress',e=>e.key==='Enter'&&add());
+</script>
+</body>
+</html>
